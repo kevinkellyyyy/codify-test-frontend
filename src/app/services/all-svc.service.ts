@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Post } from '../interface/post';
+import { Base } from '../interface/base';
 
 @Injectable({
   providedIn: 'root'
@@ -12,63 +12,66 @@ export class AllSvcService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'app-id': 'J3mqXITEt5QH2PddkAM3'
+      'app-id': '5f464aaae3e37e000208ba3a'
     })
   }
   
   constructor(private httpClient: HttpClient) { }
 
-  getAllUser(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'user', this.httpOptions)
+  getAllUser(): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'user', this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getUserProfile(id: string): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'user' + `/${id}`, this.httpOptions)
+  getUserProfile(id: string): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'user' + `/${id}`, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getAllPost(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'post', this.httpOptions)
+  // DONE
+  getAllPost(): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'post', this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getPostbyId(id: string): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'post' + `/${id}`, this.httpOptions)
+  getPostbyId(id: string): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'post' + `/${id}`, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getPostByUser(id: string): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'user' + `/${id}/post`, this.httpOptions)
+  getPostByUser(id: string): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'user' + `/${id}/post`, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }  
 
-  getPostByTag(tag: string): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'tag' + `/${tag}/post`, this.httpOptions)
+  getPostByTag(tag: string): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'tag' + `/${tag}/post`, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getComment(id: string): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'post' + `/${id}/comment`, this.httpOptions)
+  // DONE
+  getComment(id: string): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'post' + `/${id}/comment`, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
 
-  getAllTag(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(this.apiUrl + 'tag', this.httpOptions)
+  // DONE
+  getAllTag(): Observable<Base> {
+    return this.httpClient.get<Base>(this.apiUrl + 'tag', this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
