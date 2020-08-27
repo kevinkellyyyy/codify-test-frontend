@@ -1,6 +1,14 @@
-# CodifySocialApp
+# Kell's Socmed
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+View the deployed version here at [kells-socmed.vercel.app](kells-socmed.vercel.app)<br>
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4. and Bootstrap<br>
+For offline use, first you clone it after that follow the code below using terminal<br>
+```
+npm install
+npm install bootstrap --save
+npm install --save @ng-bootstrap/ng-bootstrap 
+```
+The apis used in this project is obtained from [dummyapi.io](https://dummyapi.io) and has a call limit of 500 calls per 24 hours. So if an error code 429 appears on the console, then you can create a new account to get a new api key. The api key is located in the `all-svc.service.ts` file 
 
 ## Development server
 
