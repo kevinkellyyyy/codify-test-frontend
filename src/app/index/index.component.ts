@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../interface/post';
 import { AllSvcService } from '../services/all-svc.service';
 import { Base } from '../interface/base';
-import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -16,20 +16,14 @@ export class IndexComponent implements OnInit {
   comments: Comment[];
   closeResult: string;
   picData1: any;
-  mobile: boolean;
 
   constructor(
-    private postSvc: AllSvcService, 
-    private router: Router,
-    private modalService: NgbModal 
-    ) { 
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    }
+    public postSvc: AllSvcService, 
+    private modalService: NgbModal,
+    private router: Router 
+  ) { }
 
   ngOnInit(): void {
-    if (window.screen.width === 375) { // 768px portrait
-      this.mobile = true;
-    }
     this.postSvc.getAllPost().subscribe((data) => {
       this.rawData = data;
       this.posts = this.rawData.data
@@ -48,6 +42,15 @@ export class IndexComponent implements OnInit {
         this.picData1 = this.posts[i]
       }
     }
+  }
+
+  gotoTagPosts(tag: string){
+    this.router.navigate([`/postByTag/${tag}`]);
+    this.clear();
+  }
+
+  gotoUserProfile(id: string){
+    this.router.navigate([`/userPrf/${id}`]);
   }
 
   open(content) {

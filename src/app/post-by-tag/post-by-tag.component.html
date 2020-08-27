@@ -1,1 +1,142 @@
-<p>post-by-tag works!</p>
+<div class="container" *ngIf="postByTag; else loading">
+  <h3 class="text-result">Result for : {{tagParam}}</h3>
+  <div class="row">
+    <div class="card-columns col">
+      <div *ngFor="let post of postByTag">
+        <div class="card">
+          <div class="card-header" (click)="gotoUserProfile(post.owner.id)">
+            <img
+              src="{{ post.owner.picture }}"
+              class="imgAva rounded-circle float-left avatar"
+              alt="..."
+            />
+            <b>{{ post.owner.firstName }} {{ post.owner.lastName }} </b>
+          </div>
+          <div class="cardPoin" (click)="getComment(post.id); $event.preventDefault(); open(myModal);">
+            <img
+                class="img-edit card-img-top img-fluid"
+                src="{{ post.image }}"
+                alt="Card image cap"
+            />
+            <div class="card-body">
+              <div class="likencom">
+                  <p><i class="fa fa-heart" aria-hidden="true"></i> {{ post.likes }} Likes &nbsp; <a
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#comment-modal"
+                    ><i class="fa fa-comments" aria-hidden="true"></i> See Comments
+                    </a></p>
+              </div>
+              <hr/>
+              <p>{{ post.text }} <a href="{{ post.link }}">{{ post.link }}</a></p>
+              <div class="tagcss d-inline" >
+                <a *ngFor="let tag of post.tags"class="badge" (click)="gotoTagPosts(tag)">#{{tag}}</a>
+              </div>
+              <hr/>
+              <div >
+                <p class="date">{{ post.publishDate | date: "medium" }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="centerDiv">
+    <div class="loadAnim">
+      <div class="loadAnimIn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #myModal let-modal class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Post Comment</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click'); clear()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="row"> 
+        <div class="col-sm-8">
+          <img src={{picData1.image}} alt="" class="img-mdl">
+        </div>
+        <div class="col-sm-4">
+          <div class="sideText">
+            <div class="owner-small" (click)="gotoUserProfile(picData1.owner.id); modal.dismiss('Cross click');">
+              <img
+                src="{{ picData1.owner.picture }}"
+                class="rounded-circle float-left avatar"
+                alt="..."
+                />
+              <b>{{ picData1.owner.firstName }} {{ picData1.owner.lastName }} </b>
+            </div>
+            <hr/>
+            <p class="imgText">{{ picData1.text }} <a href="{{ picData1.link }}">{{ picData1.link }}</a></p>
+            <div class="tagcss d-inline" >
+              <a *ngFor="let tag of picData1.tags" class="badge" (click)="gotoTagPosts(tag); modal.dismiss('Cross click');">#{{tag}}</a>
+            </div>
+            <hr/>
+            <div style="overflow: auto;" *ngIf="comments; else loading_comment">
+              <div *ngIf="comments.length > 0; else emptyData">
+                <div *ngFor="let comment of comments">
+                  <div class="commentdis row">
+                    <div class="commentList col-2">
+                      <img
+                        src="{{ comment.owner.picture }}"
+                        alt="..."
+                        class="rounded-circle avatar"
+                        (click)="gotoUserProfile(comment.owner.id); modal.dismiss('Cross click');"
+                      />
+                    </div>
+                    <div class="commentList col-10">
+                      <p (click)="gotoUserProfile(comment.owner.id); modal.dismiss('Cross click');">{{ comment.owner.firstName }} {{ comment.owner.lastName }}</p>
+                      <p>{{ comment.message }}</p>
+                      <p>{{ comment.publishDate | date: "medium" }}</p>
+                      <br/>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+              <ng-template #emptyData>
+                <p class="noComment">No Comment</p>
+              </ng-template>
+            </div>
+            <ng-template #loading_comment>
+              <div class="centerDivs">
+                <div class="loadAnims">
+                  <div class="loadAnimIns">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    </div>
+                </div>
+              </div>
+            </ng-template>
+            <div class="postFooter">
+              <hr/>
+              <div>
+                <p><i class="fa fa-heart" aria-hidden="true"></i> {{ picData1.likes }} Likes</p>
+              </div>
+              <div >
+                <p class="date">{{ picData1.publishDate | date: "medium" }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</ng-template>

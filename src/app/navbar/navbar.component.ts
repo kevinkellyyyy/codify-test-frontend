@@ -15,7 +15,11 @@ export class NavbarComponent implements OnInit {
   rawData: Base;
   tags: Tag[];
 
-  constructor(public postSvc: AllSvcService, private router: Router) { }
+  constructor(public postSvc: AllSvcService, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.postSvc.getAllTag().subscribe((tagList) => {
@@ -26,7 +30,10 @@ export class NavbarComponent implements OnInit {
 
   getPostByTag(tag: string): void {
     console.log(tag)
-    this.router.navigate([`/postByTag/${tag}`]);
+    this.router.navigate([`/postByTag/${tag}`])
+    .then(() => {
+      window.location.reload();
+    });
   }
 
 }

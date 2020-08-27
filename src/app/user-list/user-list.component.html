@@ -1,0 +1,35 @@
+<div class="container" *ngIf="users; else loading">
+  <div class="row">
+    <div class="card-columns col">
+      <div *ngFor="let user of users">
+        <div class="card" (click)="gotoUserProfile(user.id)">
+          <img 
+            src="{{user.picture}}" 
+            alt="..."
+            class="card-img-top img-fluid">
+          <div class="card-body">
+            <b style="font-size: x-large;">{{user.firstName}} {{user.lastName}}</b>
+            <p style="margin-bottom: 12px;">{{user.email}}</p>
+            <hr style="margin: 5px 0px;"/>
+            <a style="bottom: 0; cursor: pointer;" routerLink="/userPrf/{{user.id}}">See full profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="centerDiv">
+    <div class="loadAnim">
+      <div class="loadAnimIn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+    </div>
+  </div>
+</ng-template>

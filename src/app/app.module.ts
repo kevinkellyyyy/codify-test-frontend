@@ -9,7 +9,8 @@ import { IndexComponent } from './index/index.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PostByTagComponent } from './post-by-tag/post-by-tag.component'; 
+import { PostByTagComponent } from './post-by-tag/post-by-tag.component';
+import { UserListComponent } from './user-list/user-list.component'; 
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PostByTagComponent } from './post-by-tag/post-by-tag.component';
     UserProfileComponent,
     NavbarComponent,
     PostByTagComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

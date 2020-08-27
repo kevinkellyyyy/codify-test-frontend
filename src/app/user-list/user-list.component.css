@@ -1,0 +1,89 @@
+.card:hover{
+  background-color: #edf7ff;
+  cursor: pointer;
+}
+
+.container{
+  margin-top: 20px;
+}
+
+.centerDiv{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -110px;
+  margin-top: -25px;
+}
+
+.loadAnim {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: 100vh;
+}
+
+.loadAnimIn {
+    position: relative;
+    display: flex;
+}
+
+.loadAnimIn span {
+    width: 10px;
+    height: 80px;
+    margin: 0 15px;
+    animation: animate 1.6s linear infinite;
+}
+
+.loadAnimIn span:nth-child(1) {
+    animation-delay: 0s;
+}
+.loadAnimIn span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.loadAnimIn span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.loadAnimIn span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+.loadAnimIn span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+.loadAnimIn span:nth-child(6) {
+    animation-delay: 1s;
+}
+
+@keyframes animate {
+  0%{
+      box-shadow: 0 0 0 rgba(0, 123, 255, 1);
+      opacity: 0;
+      transform: translateX(-50px) scale(1);
+  }
+  50%{
+      box-shadow: 0 20px 50px rgba(0, 123, 255, 1);
+      opacity: 1;
+      transform: translateX(0px) scale(1);
+    }
+  100%{
+    box-shadow: 0 0 0 rgba(0, 123, 255, 1);
+    opacity: 0;
+    transform: translateX(50px) scale(1);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .card-columns {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}

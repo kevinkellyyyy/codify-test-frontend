@@ -12,12 +12,13 @@ export class AllSvcService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'app-id': '5f464aaae3e37e000208ba3a'
+      'app-id': '5f476f1898c56100027fcac5'
     })
   }
   
   constructor(private httpClient: HttpClient) { }
 
+  // DONE
   getAllUser(): Observable<Base> {
     return this.httpClient.get<Base>(this.apiUrl + 'user', this.httpOptions)
     .pipe(
@@ -54,6 +55,7 @@ export class AllSvcService {
     )
   }  
 
+  // DONE
   getPostByTag(tag: string): Observable<Base> {
     return this.httpClient.get<Base>(this.apiUrl + 'tag' + `/${tag}/post`, this.httpOptions)
     .pipe(
