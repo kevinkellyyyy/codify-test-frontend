@@ -1,3 +1,25 @@
 .nav-item a{
   cursor: pointer;
 }
+
+.navbar-brand{
+  font-size: x-large;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
+
+.navbar-nav a{
+  font-size: large;
+}
+
+@media only screen and (max-width: 577px){
+  .navbar-brand{
+    font-size: unset;
+    font-weight: bold;
+    letter-spacing: unset;
+  }
+
+  .navbar-nav a{
+    font-size: unset;
+  }
+}

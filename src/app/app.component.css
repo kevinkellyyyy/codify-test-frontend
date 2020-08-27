@@ -1,0 +1,10 @@
+.footer{
+  text-align: center;
+  bottom: 0;
+  color: #414141;
+}
+
+.footer hr{
+  height: 1px;
+  background-color: #414141;
+}

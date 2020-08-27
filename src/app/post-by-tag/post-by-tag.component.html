@@ -21,9 +21,6 @@
             <div class="card-body">
               <div class="likencom">
                   <p><i class="fa fa-heart" aria-hidden="true"></i> {{ post.likes }} Likes &nbsp; <a
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#comment-modal"
                     ><i class="fa fa-comments" aria-hidden="true"></i> See Comments
                     </a></p>
               </div>
@@ -96,11 +93,10 @@
                         src="{{ comment.owner.picture }}"
                         alt="..."
                         class="rounded-circle avatar"
-                        (click)="gotoUserProfile(comment.owner.id); modal.dismiss('Cross click');"
                       />
                     </div>
                     <div class="commentList col-10">
-                      <p (click)="gotoUserProfile(comment.owner.id); modal.dismiss('Cross click');">{{ comment.owner.firstName }} {{ comment.owner.lastName }}</p>
+                      <p>{{ comment.owner.firstName }} {{ comment.owner.lastName }}</p>
                       <p>{{ comment.message }}</p>
                       <p>{{ comment.publishDate | date: "medium" }}</p>
                       <br/>

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Base } from '../interface/base';
+import { User } from '../interface/user';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class AllSvcService {
     )
   }
 
-  getUserProfile(id: string): Observable<Base> {
-    return this.httpClient.get<Base>(this.apiUrl + 'user' + `/${id}`, this.httpOptions)
+  getUserProfile(id: string): Observable<User> {
+    return this.httpClient.get<User>(this.apiUrl + 'user' + `/${id}`, this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
