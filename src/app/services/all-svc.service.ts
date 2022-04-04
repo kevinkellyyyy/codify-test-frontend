@@ -9,7 +9,7 @@ import { User } from '../interface/user';
   providedIn: 'root'
 })
 export class AllSvcService {
-  private apiUrl = 'https://dummyapi.io/data/api/';
+  private apiUrl = 'https://dummyapi.io/data/v1/';
 
   httpOptions = {
     headers: new HttpHeaders({
